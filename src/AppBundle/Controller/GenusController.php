@@ -18,11 +18,8 @@ class GenusController extends Controller
      */
     public function showAction(string $genusName): Response
     {
-        $tempating = $this->container->get('templating');
-        $html = $tempating->render('genus/show.html.twig', [
+        return $this->render('genus/show.html.twig', [
             'name' => $genusName,
         ]);
-
-        return new Response($html);
     }
 }
