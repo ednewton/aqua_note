@@ -21,7 +21,9 @@
 </div>
 <header class="header">
     <img class="logo-icon" src="{{ asset('images/aquanote-logo.png') }}">
+    {% block logo %}
     <h1 class="logo">AquaNote</h1>
+    {% endblock %}
     <ul class="navi">
         <li class="search"><a href="#" class="js-header-search-toggle"><i class="fa fa-search"></i></a></li>
         <li><a href="#">Login</a></li>

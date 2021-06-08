@@ -2,6 +2,11 @@
 
 {% block title %}Genus {{ name }}{% endblock %}
 
+{% block logo %}
+    {{ parent() }}
+    <a class="tutorial-link" target="_blank" href="https://symfonycasts.com/screencast/symfony3-fundamentals">The tutorial</a>
+{% endblock %}
+
 {% block body %}
     <h2 class="genus-name">{{ name }}</h2>
 

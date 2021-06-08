@@ -668,3 +668,8 @@ FOOTER Styling
 .heart {
     color: red;
 }
+
+.tutorial-link {
+    margin-top: 38px;
+    padding-left: 10px;
+}
