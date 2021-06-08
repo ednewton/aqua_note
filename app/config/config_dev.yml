@@ -32,3 +32,9 @@ monolog:
 
 #swiftmailer:
 #    delivery_address: me@example.com
+
+# Doctrine Cache Configuration
+doctrine_cache:
+    providers:
+        my_markdown_cache:
+            type: array
