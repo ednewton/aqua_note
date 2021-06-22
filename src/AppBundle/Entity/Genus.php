@@ -23,4 +23,12 @@ class Genus
      * @ORM\Column(type="string")
      */
     private $name;
+
+    /**
+     * @param mixed $name
+     */
+    public function setName($name): void
+    {
+        $this->name = $name;
+    }
 }
