@@ -18,3 +18,4 @@
 /.idea/
 /composer.lock
 /app/data.db3
+/app/bootstrap.php.cache
