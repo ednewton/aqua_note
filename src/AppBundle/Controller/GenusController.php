@@ -14,7 +14,21 @@ use Symfony\Component\HttpFoundation\Response;
 class GenusController extends Controller
 {
     /**
-     * @Route("genus/new")
+     * @Route("/genus")
+     * @return Response|null
+     */
+    public function listAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $genuses = $em->getRepository(Genus::class)
+            ->findAll();
+
+        return $this->render('genus/list.html.twig', ['genuses' => $genuses]);
+    }
+
+    /**
+     * @Route("/genus/new")
      */
     public function newAction()
     {

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace AppBundle\Entity;
 
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -88,6 +89,14 @@ class Genus
     }
 
     /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
      * @param string $name
      */
     public function setName(string $name): void
@@ -109,5 +118,13 @@ class Genus
     public function setId(int $id): void
     {
         $this->id = $id;
+    }
+
+    /**
+     * @return DateTime
+     */
+    public function getUpdatedAt(): DateTime
+    {
+        return new DateTime('-' . rand(0, 100) . ' days');
     }
 }
