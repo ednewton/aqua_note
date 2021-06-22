@@ -35,8 +35,12 @@
 </div>
 
 <div class="footer">
-    <p class="footer-text">Made with <span class="heart"><3</span> <a href="https://knpuniversity.com">KnpUniversity</a>
-    </p>
+    {% block footer %}
+        <span class="tutorial-link" >
+        <a target="_blank" href="https://symfonycasts.com/screencast/symfony3-doctrine">The tutorial: </a>
+        (Chapter Doctrine 10 completed)
+        </span>
+    {% endblock %}
 </div>
 
 {% block javascripts %}
