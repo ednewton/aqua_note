@@ -17,3 +17,4 @@
 /var/
 /.idea/
 /composer.lock
+/app/data.db3
