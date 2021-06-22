@@ -37,41 +37,45 @@ class GenusController extends Controller
         $genus->setName($name);
         $genus->setSubFamily('Octopodinae');
         $genus->setSpeciesCount(rand(100, 9999));
-        
+
         $em = $this->getDoctrine()->getManager();
         $em->persist($genus);
         $em->flush();
-        
+
         return new Response('<html><body>Genus ' . $name . ' created!</body></html>');
     }
-    
+
     /**
-     * @Route("/genus/{genusName}")
+     * @Route("/genus/{genusName}", name="genus_show")
      * @param string $genusName
      *
      * @return Response
      */
     public function showAction(string $genusName): Response
     {
-        $funFact = 'Octopuses can change the color of their body in just *three-tenths* of a second!';
-        $key = md5($funFact);
+        $em = $this->getDoctrine()->getManager();
 
-        $cache = $this->get('doctrine_cache.providers.my_markdown_cache');
-        if ($cache->contains($key)) {
-            $funFact = $cache->fetch($key);
-        } else {
-            sleep(1);
-            $funFact = $this->get('markdown.parser')
-                ->transform($funFact);
-            $cache->save($key, $funFact);
+        $genus = $em->getRepository(Genus::class)
+            ->findOneBy(['name' => $genusName]);
+
+        if (!$genus) {
+            throw $this->createNotFoundException('genus not found');
         }
+
+//        $key = md5($funFact);
+//        $cache = $this->get('doctrine_cache.providers.my_markdown_cache');
+//        if ($cache->contains($key)) {
+//            $funFact = $cache->fetch($key);
+//        } else {
+//            sleep(1);
+//            $funFact = $this->get('markdown.parser')
+//                ->transform($funFact);
+//            $cache->save($key, $funFact);
+//        }
 
         return $this->render(
             'genus/show.html.twig',
-            [
-                'name' => $genusName,
-                'funFact' => $funFact,
-            ]
+            ['genus' => $genus]
         );
     }
 

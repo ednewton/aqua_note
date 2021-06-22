@@ -6,6 +6,7 @@ namespace AppBundle\Entity;
 
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use Exception;
 
 /**
  * @ORM\Entity
@@ -73,9 +74,9 @@ class Genus
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getFunFact(): string
+    public function getFunFact(): ?string
     {
         return $this->funFact;
     }
@@ -122,6 +123,7 @@ class Genus
 
     /**
      * @return DateTime
+     * @throws Exception
      */
     public function getUpdatedAt(): DateTime
     {
